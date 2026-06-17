@@ -91,7 +91,7 @@ public class RoomServiceImpl extends ServiceImpl<RoomMapper, Room> implements Ro
 
         // 业务校验：楼层不能超过楼宇总层数
         if (dto.getFloor() != null && building.getFloors() != null) {
-            if (dto.getFloor() > building.getFloors()) {
+            if (dto.getFloor() >= building.getFloors()) {
                 throw new BusinessException("楼层不能超过楼宇总层数【" + building.getFloors() + "】");
             }
         }
