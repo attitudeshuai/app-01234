@@ -68,8 +68,8 @@ public class RentalServiceImpl extends ServiceImpl<RentalMapper, Rental> impleme
             throw new BusinessException("房屋不存在");
         }
 
-        // 业务校验：检查房屋状态是否为空闲
-        if (!Constants.ROOM_STATUS_FREE.equals(room.getStatus())) {
+        // 业务校验：检查房屋状态是否为已出租
+        if (Constants.ROOM_STATUS_RENTED.equals(room.getStatus())) {
             throw new BusinessException("该房屋当前状态为【" + room.getStatus() + "】，不可出租");
         }
 
